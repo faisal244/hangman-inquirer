@@ -4,7 +4,7 @@ const displayWord = (word) => {
     console.log(`WORD: ${word}`);
 };
 
-const displayInitialHealth = (attempts = 10) => {
+const displayHealth = (attempts = 10) => {
     const healthArray = new Array(attempts).fill("❤️");
 
     console.log(`HEALTH: ${healthArray.join("")}`);
@@ -17,9 +17,11 @@ const initGame = (word) => {
     displayWord(maskedWord);
 
     // display initial health
-    displayInitialHealth();
+    displayHealth();
 };
 
 module.exports = {
     initGame,
+    displayWord,
+    displayHealth,
 };
