@@ -1,0 +1,23 @@
+{
+	"name": "hangman-inquirer",
+	"version": "1.0.0",
+	"description": "A CLI word game using inquirer",
+	"main": "index.js",
+	"scripts": {
+		"start": "node src/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/faisal244/hangman-inquirer.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/faisal244/hangman-inquirer/issues"
+	},
+	"homepage": "https://github.com/faisal244/hangman-inquirer#readme",
+	"dependencies": {
+		"inquirer": "^8.2.4"
+	}
+}
