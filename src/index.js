@@ -1,29 +1,11 @@
 const inquirer = require("inquirer");
 
 const { gameSettingQuestions, generateGameQuestion } = require("./questions");
+const { initGame, displayWord, displayHealth, play } = require("./utils/game");
 const {
 	getCategoryFromFile,
 	getRandomWordFromList,
 } = require("./utils/gameSettings");
-
-const { initGame, displayWord, displayHealth } = require("./utils/game");
-
-// ['e', 'x']
-// t
-const play = (letters, word) =>
-	[...word.toLowerCase()]
-		.map((letterFromWord) => {
-			if (letterFromWord === " ") {
-				return letterFromWord;
-			}
-
-			if (!letters.includes(letterFromWord)) {
-				return "_";
-			}
-
-			return letterFromWord;
-		})
-		.join("");
 
 const init = async () => {
 	// prompt the game setting questions and store answers
@@ -41,12 +23,13 @@ const init = async () => {
 	// initial game for word
 	initGame(word);
 
-	let counter = 3;
-
 	// declare letters array to track letters from user
 	const letters = [];
+	let inProgress = true;
+	let remainingAttempts = 10;
+	let gameStatus = "LOSER";
 
-	while (counter > 0) {
+	while (inProgress) {
 		// get game question
 		const gameQuestion = generateGameQuestion(
 			answers.gameMode,
@@ -56,7 +39,10 @@ const init = async () => {
 		// prompt game question to get letter
 		const { letter } = await inquirer.prompt(gameQuestion);
 
-		console.log(letter);
+		if (!word.includes(letter)) {
+			// reduce attempts
+			remainingAttempts -= 1;
+		}
 
 		letters.push(letter);
 
@@ -67,12 +53,18 @@ const init = async () => {
 		displayWord(newWord);
 
 		// display health
-		displayHealth(9);
+		displayHealth(remainingAttempts);
 
-		counter -= 1;
+		// check if new word is equal to word
+		if (word.toLowerCase() === newWord || remainingAttempts === 0) {
+			if (word.toLowerCase() === newWord) {
+				gameStatus = "WINNER";
+			}
+			inProgress = false;
+		}
 	}
 
-	console.log("END");
+	console.log(`GAME STATUS: ${gameStatus}`);
 };
 
 init();
