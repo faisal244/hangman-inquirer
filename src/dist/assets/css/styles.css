@@ -1,0 +1,32 @@
+:root {
+	--charcoal: #264653ff;
+	--persian-green: #2a9d8fff;
+	--maize-crayola: #e9c46aff;
+	--sandy-brown: #f4a261ff;
+	--burnt-sienna: #e76f51ff;
+}
+
+.jumbotron {
+	padding: 2rem 1rem;
+	margin-bottom: 2rem;
+	background-color: var(--charcoal);
+	color: var(--maize-crayola);
+}
+
+.health-icons {
+	color: var(--burnt-sienna);
+}
+
+.guessed-letter {
+	color: #ffffff;
+	padding: 8px;
+	margin: 8px;
+}
+
+.guessed-letter--correct {
+	background-color: var(--persian-green);
+}
+
+.guessed-letter--incorrect {
+	background-color: var(--burnt-sienna);
+}

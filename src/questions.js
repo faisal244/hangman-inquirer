@@ -3,11 +3,11 @@ const gameSettingQuestions = [
 		type: "input",
 		message: "Please enter your nickname:",
 		name: "nickname",
-		validate: (answer) => (answer ? true : "This is required"),
+		validate: (answer) => (answer ? true : "Nickname is required"),
 	},
 	{
 		type: "list",
-		message: ({ nickname }) => `${nickname} please choose a category:`,
+		message: ({ nickname }) => `${nickname}, please choose a category:`,
 		choices: [
 			{
 				name: "Movies",
@@ -19,12 +19,22 @@ const gameSettingQuestions = [
 				value: "food",
 				short: "Food",
 			},
+			{
+				name: "Sports",
+				value: "sports",
+				short: "Sports",
+			},
+			{
+				name: "Places",
+				value: "places",
+				short: "Places",
+			},
 		],
 		name: "category",
 	},
 	{
 		type: "list",
-		message: ({ nickname }) => `${nickname} please choose a level:`,
+		message: ({ nickname }) => `${nickname}, please choose a level:`,
 		choices: [
 			{
 				name: "Easy",
@@ -43,10 +53,11 @@ const gameSettingQuestions = [
 			},
 		],
 		name: "level",
+		default: "easy",
 	},
 	{
 		type: "list",
-		message: ({ nickname }) => `${nickname} please choose a game mode:`,
+		message: ({ nickname }) => `${nickname}, please choose a mode of play:`,
 		choices: [
 			{
 				name: "Letter Input",
@@ -60,10 +71,12 @@ const gameSettingQuestions = [
 			},
 		],
 		name: "gameMode",
+		default: "input",
 	},
 	{
 		type: "confirm",
-		message: ({ nickname }) => `${nickname} do you want to generate a report?`,
+		message: ({ nickname }) =>
+			`${nickname}, would you like to generate a game report?`,
 		name: "generateReport",
 		default: true,
 	},
