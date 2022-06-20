@@ -64,3 +64,12 @@ AND the report must open in the browser automatically
 ### Screenshot
 
 ![screenshot](./screenshot.png)
+
+## Getting Started
+
+```
+git clone git@github.com:surajverma2587/hangman-inquirer.git
+cd hangman-inquirer
+npm i
+npm run start
+```
